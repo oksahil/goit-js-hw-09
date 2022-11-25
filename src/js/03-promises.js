@@ -7,7 +7,7 @@ const refs = {
     amount: document.querySelector('[name="amount"]'),
     btn: document.querySelector('[type="submit"]'),
 }
-//
+
 refs.btn.addEventListener('click', startPromise);
 
 function createPromise(position, delayAll) {
