@@ -1,5 +1,6 @@
 const throttle = require('lodash.throttle');
 let startColorId = null;
+
 const refs = {
   body: document.querySelector('body'),
   startBtn: document.querySelector('[data-start]'),
@@ -21,8 +22,6 @@ function startBtnClick() {
     }, 1000);
     refs.startBtn.setAttribute('disabled', true);
     refs.stopBtn.removeAttribute('disabled');
-    return startColorId;
-    
 };
 
 
