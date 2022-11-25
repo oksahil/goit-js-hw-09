@@ -15,17 +15,17 @@ function getRandomHexColor() {
 }
 
 function startBtnClick() {
-    startColorId = setInterval(() => {
+   const startColorId = setInterval(() => {
         const colorClick = getRandomHexColor();
         refs.body.style.backgroundColor = colorClick;
     }, 1000);
     refs.startBtn.setAttribute('disabled', true);
     refs.stopBtn.removeAttribute('disabled');
-    
+    return startColorId;
 };
 
 
-function stopBtnClick() {
+function stopBtnClick(startColorId) {
     clearInterval(startColorId);
     refs.stopBtn.setAttribute('disabled', true);
     refs.startBtn.removeAttribute('disabled');

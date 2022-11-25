@@ -50,7 +50,7 @@ function startBtnClick() {
     refs.startBtn.setAttribute('disabled', true); 
     const selectedDate = new Date(fp.selectedDates);
     let ms = selectedDate.getTime() - options.defaultDate.getTime();
-    startTimerId = setInterval(() => {
+    const startTimerId = setInterval(() => {
         ms = ms - 1000;
         convertMs(ms);
     }, 1000);
