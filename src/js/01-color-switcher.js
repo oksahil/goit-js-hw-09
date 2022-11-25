@@ -1,5 +1,5 @@
 const throttle = require('lodash.throttle');
-
+let startColorId = null;
 const refs = {
   body: document.querySelector('body'),
   startBtn: document.querySelector('[data-start]'),
@@ -7,12 +7,7 @@ const refs = {
 }
 
 refs.startBtn.addEventListener('click', startBtnClick);
-// refs.stopBtn.addEventListener('click', stopBtnClick);
-refs.stopBtn.addEventListener("click", () => {
-    clearInterval(startColorId);
-    refs.stopBtn.setAttribute('disabled', true);
-    refs.startBtn.removeAttribute('disabled');
-  });
+refs.stopBtn.addEventListener('click', stopBtnClick);
 refs.stopBtn.setAttribute('disabled', true);
 
 function getRandomHexColor() {
@@ -26,12 +21,13 @@ function startBtnClick() {
     }, 1000);
     refs.startBtn.setAttribute('disabled', true);
     refs.stopBtn.removeAttribute('disabled');
+    return startColorId;
     
 };
 
 
 function stopBtnClick() {
-    
+    clearInterval(startColorId);
     refs.stopBtn.setAttribute('disabled', true);
     refs.startBtn.removeAttribute('disabled');
 };

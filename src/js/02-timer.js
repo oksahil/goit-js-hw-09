@@ -2,6 +2,7 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import Notiflix from 'notiflix';
 
+let startTimerId = null;
 const refs = {
     body: document.querySelector('body'),
     myInput: document.querySelector('input#datetime-picker'),
@@ -50,7 +51,7 @@ function startBtnClick() {
     refs.startBtn.setAttribute('disabled', true); 
     const selectedDate = new Date(fp.selectedDates);
     let ms = selectedDate.getTime() - options.defaultDate.getTime();
-    const startTimerId = setInterval(() => {
+    startTimerId = setInterval(() => {
         ms = ms - 1000;
         convertMs(ms);
     }, 1000);
