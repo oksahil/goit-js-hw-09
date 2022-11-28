@@ -21,7 +21,7 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
     onClose(selectedDates) {
-     
+     check();
     // console.log(selectedDates);
   },
 };
@@ -31,8 +31,7 @@ const fp = flatpickr(refs.myInput, options);
 
 refs.startBtn.addEventListener('click', startBtnClick);
 refs.startBtn.setAttribute('disabled', true);
-check();
-refs.body.addEventListener('click', check);
+
 
 function check() {
     refs.startBtn.setAttribute('disabled', true);  

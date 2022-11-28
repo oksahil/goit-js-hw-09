@@ -8,7 +8,7 @@ const refs = {
     btn: document.querySelector('[type="submit"]'),
 }
 
-refs.btn.addEventListener('click', startPromise);
+refs.form.addEventListener('submit', startPromise);
 
 function createPromise(position, delayAll) {
   const shouldResolve = Math.random() > 0.3;
@@ -31,7 +31,7 @@ function startPromise(e) {
     for (let i = 1; i <= Number(amountInput); i += 1) {
       position = i;
       
-      let delayAll = Number(delayInput) + Number(delayStepInput) * position;
+      let delayAll = Number(delayInput) + Number(delayStepInput) * (position - 1);
      createPromise(position, delayAll)
         .then(({ position, delayAll }) => {
             setTimeout(() => {
@@ -44,5 +44,7 @@ function startPromise(e) {
             Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delayAll}ms`);
           }, delayAll);
         });
-    }
+      
+  };
+  e.currentTarget.reset();
 };
